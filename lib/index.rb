@@ -21,6 +21,8 @@ require 'time'
   "User-Agent": 'rubocop-action'
 }
 
+@rubocop_args, *_ = ARGV
+
 def create_check
   body = {
     "name" => @check_name,
@@ -76,7 +78,7 @@ def run_rubocop
   annotations = []
   errors = nil
   Dir.chdir(@GITHUB_WORKSPACE) {
-    errors = JSON.parse(`rubocop --format json`)
+    errors = JSON.parse(`rubocop --format json #{@rubocop_args}`)
   }
   conclusion = "success"
   count = 0
