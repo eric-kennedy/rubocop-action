@@ -14,4 +14,4 @@ else
   glob="$@"
 fi
 
-ruby /action/lib/index.rb $glob
+ruby /action/lib/index.rb "$glob"
