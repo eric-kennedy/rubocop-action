@@ -2,6 +2,16 @@
 
 set -e
 
-gem install rubocop
+# Setup Rubocop if needed
+if [ ! `which rubocop` ]; then
+  echo "\n# Installing rubocop..."
+  gem install rubocop
+fi
 
-ruby /action/lib/index.rb
+if [ -z "$1" ]; then
+  glob="."
+else
+  glob="$@"
+fi
+
+ruby /action/lib/index.rb $glob
