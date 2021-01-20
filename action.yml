@@ -1,0 +1,11 @@
+name: 'Rubocop checks'
+description: 'Lint your Ruby code in parallel to your builds'
+icon: 'code'
+color: 'red'
+inputs:
+  args:
+    description: 'Arguments to pass to Rubocop'
+    default: '.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
